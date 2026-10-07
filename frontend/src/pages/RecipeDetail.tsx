@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import {
   Clock, Users, Heart, Bookmark, Share2, Minus, Plus, ShoppingBasket, Pencil,
-  Trash2, Flame, ChefHat, Replace,
+  Trash2, Flame, ChefHat, Replace, CalendarDays,
 } from "lucide-react";
 import { toast } from "sonner";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -16,6 +16,8 @@ import { queryClient } from "@/lib/queryClient";
 import { useMe } from "@/lib/session";
 import { coverFor, errorMessage, formatMinutes, formatQuantity, initials, timeAgo } from "@/lib/format";
 import PageShell from "@/components/layout/PageShell";
+import CookMode from "@/components/recipes/CookMode";
+import ReportDialog from "@/components/recipes/ReportDialog";
 import { StarRating, StarPicker } from "@/components/recipes/StarRating";
 import type {
   Comment, Recipe, Review, ScaleResponse, SubstituteResponse, ToggleResponse,
@@ -31,6 +33,7 @@ export default function RecipeDetail() {
   const [reviewText, setReviewText] = useState("");
   const [commentText, setCommentText] = useState("");
   const [subTarget, setSubTarget] = useState("");
+  const [cookMode, setCookMode] = useState(false);
 
   const recipeQuery = useQuery({
     queryKey: ["recipe", id],
@@ -130,6 +133,21 @@ export default function RecipeDetail() {
     onError: (e) => toast.error(errorMessage(e, "Could not fetch substitutions.")),
   });
 
+  const addToPlan = useMutation({
+    mutationFn: () =>
+      apiPost("/meal-plan/entries", {
+        recipeId: id,
+        planDate: new Date().toISOString().slice(0, 10),
+        slot: "dinner",
+        servings: effectiveServings,
+      }),
+    onSuccess: () => {
+      toast.success("Added to today's dinner in your meal planner");
+      void queryClient.invalidateQueries({ queryKey: ["meal-plan"] });
+    },
+    onError: (e) => toast.error(errorMessage(e)),
+  });
+
   const share = async () => {
     try {
       await navigator.clipboard.writeText(window.location.href);
@@ -209,8 +227,17 @@ export default function RecipeDetail() {
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Button
+                  onClick={() => setCookMode(true)}
+                  data-testid="cook-mode-open-btn"
+                >
+                  <ChefHat className="mr-2 size-4" />
+                  Start cooking
+                </Button>
+                <Button
+                  variant="outline"
                   onClick={() => requireLogin() && favorite.mutate()}
                   data-testid="recipe-save-btn"
+                  className="border-stone-300 bg-transparent text-stone-50 hover:bg-stone-50 hover:text-stone-900"
                 >
                   <Bookmark className={`mr-2 size-4 ${recipe.favoritedByMe ? "fill-current" : ""}`} />
                   {recipe.favoritedByMe ? "Saved" : "Save recipe"}
@@ -268,8 +295,7 @@ export default function RecipeDetail() {
                   <span className="block text-xs text-stone-300">@{recipe.authorUsername}</span>
                 </span>
               </Link>
-            </div>
-          ) : (
+            </div>          ) : (
             <div className="h-64 max-w-3xl animate-pulse rounded-2xl bg-stone-700/40" />
           )}
         </div>
@@ -417,6 +443,16 @@ export default function RecipeDetail() {
                 <ShoppingBasket className="mr-2 size-4" />
                 Add all to shopping list
               </Button>
+              <Button
+                variant="outline"
+                className="mt-2 w-full"
+                onClick={() => requireLogin() && addToPlan.mutate()}
+                disabled={addToPlan.isPending}
+                data-testid="add-to-meal-plan-btn"
+              >
+                <CalendarDays className="mr-2 size-4" />
+                Add to meal planner
+              </Button>
             </div>
 
             {recipe?.nutrition && (
@@ -466,6 +502,14 @@ export default function RecipeDetail() {
                       <Badge variant="secondary">#{tag}</Badge>
                     </Link>
                   ))}
+                </div>
+              )}
+              {recipe && (
+                <div className="mt-8 flex items-center justify-between border-t border-border pt-6">
+                  <p className="text-sm text-muted-foreground">
+                    Something wrong with this recipe?
+                  </p>
+                  <ReportDialog targetType="recipe" targetId={recipe.id} />
                 </div>
               )}
             </section>
@@ -575,6 +619,14 @@ export default function RecipeDetail() {
                         </span>
                       </p>
                       <p className="mt-1 text-sm leading-relaxed">{comment.text}</p>
+                      <div className="mt-2 flex justify-end">
+                        <ReportDialog
+                          targetType="comment"
+                          targetId={comment.id}
+                          label="Report"
+                          compact
+                        />
+                      </div>
                     </div>
                   </li>
                 ))}
@@ -586,6 +638,16 @@ export default function RecipeDetail() {
           </div>
         </div>
       </div>
+
+      {/* Full-screen cooking view */}
+      {cookMode && recipe && (
+        <CookMode
+          recipe={recipe}
+          ingredients={scaleQuery.data?.ingredients ?? []}
+          servings={effectiveServings}
+          onClose={() => setCookMode(false)}
+        />
+      )}
     </PageShell>
   );
 }

@@ -174,3 +174,15 @@ CREATE TABLE IF NOT EXISTS ai_messages (
   created_at DATETIME NOT NULL,
   KEY idx_ai_session (session_id, created_at)
 );
+
+-- Weekly meal planner: one row per (user, ISO date, meal slot).
+CREATE TABLE IF NOT EXISTS meal_plan_entries (
+  id         VARCHAR(36) PRIMARY KEY,
+  user_id    VARCHAR(36) NOT NULL,
+  recipe_id  VARCHAR(36) NOT NULL,
+  plan_date  DATE NOT NULL,
+  slot       VARCHAR(12) NOT NULL,
+  servings   INT NOT NULL DEFAULT 2,
+  created_at DATETIME NOT NULL,
+  KEY idx_mpe_user_date (user_id, plan_date)
+);

@@ -225,6 +225,36 @@ export interface AdminStats {
   topRecipes: AdminRecipeRow[];
 }
 
+/** Mirrors MealPlanDtos.MealPlanEntryResponse. */
+export interface MealPlanEntry {
+  id: string;
+  recipeId: string;
+  recipeTitle: string;
+  recipeImage?: string | null;
+  recipeTotalTime: number;
+  planDate: string;
+  slot: MealSlot;
+  servings: number;
+}
+
+export interface MealPlan {
+  weekStart: string;
+  entries: MealPlanEntry[];
+}
+
+export type MealSlot = "breakfast" | "lunch" | "dinner";
+
+export const MEAL_SLOTS: Array<{ value: MealSlot; label: string }> = [
+  { value: "breakfast", label: "Breakfast" },
+  { value: "lunch", label: "Lunch" },
+  { value: "dinner", label: "Dinner" },
+];
+
+/** Mirrors the {"url": "..."} body of POST /api/uploads/image. */
+export interface UploadResponse {
+  url: string;
+}
+
 export const CUISINES = [
   "Indian",
   "Italian",

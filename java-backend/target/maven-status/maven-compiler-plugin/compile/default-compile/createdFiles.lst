@@ -1,4 +1,5 @@
 com/tastetribe/service/RecipeService$Marked.class
+com/tastetribe/dto/MealPlanDtos$MoveMealRequest.class
 com/tastetribe/dto/AiDtos$GenerateRecipeRequest.class
 com/tastetribe/dto/AiDtos.class
 com/tastetribe/dto/ShoppingDtos$ShoppingItemResponse.class
@@ -11,8 +12,11 @@ com/tastetribe/controller/UserController.class
 com/tastetribe/dto/SocialDtos$ReviewRequest.class
 com/tastetribe/exception/UnauthorizedException.class
 com/tastetribe/dao/impl/CommentDaoImpl.class
+com/tastetribe/dto/MealPlanDtos.class
+com/tastetribe/dto/MealPlanDtos$MealPlanEntryResponse.class
 com/tastetribe/dto/RecipeDtos.class
 com/tastetribe/dto/AuthDtos$ForgotPasswordRequest.class
+com/tastetribe/controller/UploadController.class
 com/tastetribe/dao/ChatDao.class
 com/tastetribe/dao/CategoryDao.class
 com/tastetribe/service/AuthService.class
@@ -33,6 +37,7 @@ com/tastetribe/dao/impl/ReportDaoImpl.class
 com/tastetribe/dto/ShoppingDtos.class
 com/tastetribe/dto/RecipeDtos$CategoryRequest.class
 com/tastetribe/dto/RecipeDtos$ScaleResponse.class
+com/tastetribe/model/MealPlanEntry.class
 com/tastetribe/dao/ShoppingListDao.class
 com/tastetribe/model/Role.class
 com/tastetribe/util/PasswordHasher.class
@@ -42,6 +47,7 @@ com/tastetribe/dao/RecentlyViewedDao.class
 com/tastetribe/TasteTribeApplication.class
 com/tastetribe/dao/LikeDao.class
 com/tastetribe/service/LlmClient.class
+com/tastetribe/service/MealPlanService.class
 com/tastetribe/dto/ShoppingDtos$ToggleItemRequest.class
 com/tastetribe/dao/impl/RecentlyViewedDaoImpl.class
 com/tastetribe/model/ChatMessage.class
@@ -105,9 +111,12 @@ com/tastetribe/dao/impl/FollowDaoImpl.class
 com/tastetribe/controller/SocialController.class
 com/tastetribe/exception/BadRequestException.class
 com/tastetribe/dto/SocialDtos$ReviewResponse.class
+com/tastetribe/dao/MealPlanDao.class
 com/tastetribe/model/ReportTargetType.class
 com/tastetribe/dao/impl/FavoriteDaoImpl.class
+com/tastetribe/service/ImageStorageService.class
 com/tastetribe/dao/ReportDao.class
+com/tastetribe/dto/MealPlanDtos$AddMealRequest.class
 com/tastetribe/dto/RecipeDtos$RecipePage.class
 com/tastetribe/dao/GenericDao.class
 com/tastetribe/dao/impl/SessionDaoImpl.class
@@ -120,9 +129,12 @@ com/tastetribe/service/ViewTrackerService.class
 com/tastetribe/dao/impl/ReviewDaoImpl.class
 com/tastetribe/exception/DuplicateResourceException.class
 com/tastetribe/dao/impl/AbstractUserRecipeDaoImpl.class
+com/tastetribe/dao/impl/MealPlanDaoImpl.class
+com/tastetribe/controller/MealPlanController.class
 com/tastetribe/controller/CategoryController.class
 com/tastetribe/util/QuantityFormatter.class
 com/tastetribe/dto/AiDtos$SubstituteRequest.class
+com/tastetribe/dto/MealPlanDtos$MealPlanResponse.class
 com/tastetribe/service/CommentService.class
 com/tastetribe/web/AuthFilter.class
 com/tastetribe/dto/ShoppingDtos$ShoppingListResponse.class

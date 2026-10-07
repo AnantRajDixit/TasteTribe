@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ChefHat, Search, Menu, PlusCircle, ShoppingBasket, LayoutDashboard, Shield, LogOut, User as UserIcon } from "lucide-react";
+import { ChefHat, Search, Menu, PlusCircle, ShoppingBasket, LayoutDashboard, Shield, LogOut, User as UserIcon, CalendarDays } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
@@ -19,6 +19,7 @@ const NAV_LINKS = [
   { to: "/recipes", label: "Explore", testid: "nav-explore-link" },
   { to: "/categories", label: "Categories", testid: "nav-categories-link" },
   { to: "/feed", label: "Community", testid: "nav-feed-link" },
+  { to: "/meal-planner", label: "Meal planner", testid: "nav-meal-planner-link" },
 ];
 
 export default function Navbar() {
@@ -124,6 +125,13 @@ export default function Navbar() {
                   >
                     <LayoutDashboard className="mr-2 size-4" />
                     Dashboard
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => navigate("/meal-planner")}
+                    data-testid="menu-meal-planner-link"
+                  >
+                    <CalendarDays className="mr-2 size-4" />
+                    Meal planner
                   </DropdownMenuItem>
                   <DropdownMenuItem
                     onClick={() => navigate("/shopping-list")}

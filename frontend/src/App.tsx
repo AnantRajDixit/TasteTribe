@@ -9,6 +9,7 @@ import RecipeBuilder from "@/pages/RecipeBuilder";
 import Dashboard from "@/pages/Dashboard";
 import ShoppingListPage from "@/pages/ShoppingListPage";
 import ChefProfile from "@/pages/ChefProfile";
+import MealPlanner from "@/pages/MealPlanner";
 import AdminPanel from "@/pages/AdminPanel";
 import { LoginPage, RegisterPage } from "@/pages/Auth";
 import NotFound from "@/pages/NotFound";
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/feed" element={<Feed />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/shopping-list" element={<ShoppingListPage />} />
+        <Route path="/meal-planner" element={<MealPlanner />} />
         <Route path="/chefs/:username" element={<ChefProfile />} />
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/login" element={<LoginPage />} />

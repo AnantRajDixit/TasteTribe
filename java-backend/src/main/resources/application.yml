@@ -28,8 +28,15 @@ spring:
     default-property-inclusion: non_null
     serialization:
       write-dates-as-timestamps: false
+  servlet:
+    multipart:
+      max-file-size: 8MB
+      max-request-size: 10MB
 
 app:
+  uploads:
+    # Where uploaded cover photos are stored; served back at /api/uploads/**
+    dir: ${UPLOADS_DIR:/app/java-backend/uploads}
   cors:
     # Allowed browser origins for credentialed requests (comma separated, * = any).
     origins: ${CORS_ORIGINS:*}

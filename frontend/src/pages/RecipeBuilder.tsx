@@ -16,6 +16,7 @@ import { queryClient } from "@/lib/queryClient";
 import { useMe } from "@/lib/session";
 import { errorMessage } from "@/lib/format";
 import PageShell from "@/components/layout/PageShell";
+import CoverPhotoPicker from "@/components/recipes/CoverPhotoPicker";
 import {
   CUISINES, CATEGORY_NAMES, DIFFICULTIES, DIETS, UNITS,
 } from "@/lib/types";
@@ -208,13 +209,9 @@ export default function RecipeBuilder() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="cover">Cover image URL</Label>
-                <Input
-                  id="cover"
+                <CoverPhotoPicker
                   value={form.coverImage ?? ""}
-                  onChange={(e) => setForm({ ...form, coverImage: e.target.value })}
-                  placeholder="https://…"
-                  data-testid="recipe-cover-input"
+                  onChange={(next) => setForm({ ...form, coverImage: next })}
                 />
               </div>
 

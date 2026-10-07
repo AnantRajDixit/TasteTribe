@@ -24,6 +24,7 @@ export default function Footer() {
             <li><Link to="/categories" className="transition-colors duration-150 hover:text-primary">Categories</Link></li>
             <li><Link to="/feed" className="transition-colors duration-150 hover:text-primary">Community feed</Link></li>
             <li><Link to="/shopping-list" className="transition-colors duration-150 hover:text-primary">Shopping list</Link></li>
+            <li><Link to="/meal-planner" className="transition-colors duration-150 hover:text-primary">Meal planner</Link></li>
           </ul>
         </div>
         <div>

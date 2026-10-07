@@ -4,6 +4,7 @@ import com.tastetribe.dao.CommentDao;
 import com.tastetribe.dao.FavoriteDao;
 import com.tastetribe.dao.FollowDao;
 import com.tastetribe.dao.LikeDao;
+import com.tastetribe.dao.MealPlanDao;
 import com.tastetribe.dao.RecipeDao;
 import com.tastetribe.dao.ReportDao;
 import com.tastetribe.dao.ReviewDao;
@@ -42,11 +43,12 @@ public class AdminService {
     private final LikeDao likeDao;
     private final FavoriteDao favoriteDao;
     private final FollowDao followDao;
+    private final MealPlanDao mealPlanDao;
     private final RecipeService recipeService;
 
     public AdminService(UserDao userDao, RecipeDao recipeDao, ReviewDao reviewDao, CommentDao commentDao,
                         ReportDao reportDao, SessionDao sessionDao, LikeDao likeDao, FavoriteDao favoriteDao,
-                        FollowDao followDao, RecipeService recipeService) {
+                        FollowDao followDao, MealPlanDao mealPlanDao, RecipeService recipeService) {
         this.userDao = userDao;
         this.recipeDao = recipeDao;
         this.reviewDao = reviewDao;
@@ -56,6 +58,7 @@ public class AdminService {
         this.likeDao = likeDao;
         this.favoriteDao = favoriteDao;
         this.followDao = followDao;
+        this.mealPlanDao = mealPlanDao;
         this.recipeService = recipeService;
     }
 
@@ -119,6 +122,7 @@ public class AdminService {
         likeDao.deleteAllForUser(userId);
         favoriteDao.deleteAllForUser(userId);
         followDao.deleteAllForUser(userId);
+        mealPlanDao.deleteAllForUser(userId);
         sessionDao.deleteSessionsForUser(userId);
         userDao.delete(target.getId());
     }

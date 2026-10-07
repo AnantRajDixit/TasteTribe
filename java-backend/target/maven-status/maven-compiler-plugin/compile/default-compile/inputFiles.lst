@@ -6,9 +6,11 @@
 /app/java-backend/src/main/java/com/tastetribe/controller/AuthController.java
 /app/java-backend/src/main/java/com/tastetribe/controller/CategoryController.java
 /app/java-backend/src/main/java/com/tastetribe/controller/HealthController.java
+/app/java-backend/src/main/java/com/tastetribe/controller/MealPlanController.java
 /app/java-backend/src/main/java/com/tastetribe/controller/RecipeController.java
 /app/java-backend/src/main/java/com/tastetribe/controller/ShoppingListController.java
 /app/java-backend/src/main/java/com/tastetribe/controller/SocialController.java
+/app/java-backend/src/main/java/com/tastetribe/controller/UploadController.java
 /app/java-backend/src/main/java/com/tastetribe/controller/UserController.java
 /app/java-backend/src/main/java/com/tastetribe/dao/CategoryDao.java
 /app/java-backend/src/main/java/com/tastetribe/dao/ChatDao.java
@@ -17,6 +19,7 @@
 /app/java-backend/src/main/java/com/tastetribe/dao/FollowDao.java
 /app/java-backend/src/main/java/com/tastetribe/dao/GenericDao.java
 /app/java-backend/src/main/java/com/tastetribe/dao/LikeDao.java
+/app/java-backend/src/main/java/com/tastetribe/dao/MealPlanDao.java
 /app/java-backend/src/main/java/com/tastetribe/dao/RecentlyViewedDao.java
 /app/java-backend/src/main/java/com/tastetribe/dao/RecipeDao.java
 /app/java-backend/src/main/java/com/tastetribe/dao/RecipeQuery.java
@@ -33,6 +36,7 @@
 /app/java-backend/src/main/java/com/tastetribe/dao/impl/FavoriteDaoImpl.java
 /app/java-backend/src/main/java/com/tastetribe/dao/impl/FollowDaoImpl.java
 /app/java-backend/src/main/java/com/tastetribe/dao/impl/LikeDaoImpl.java
+/app/java-backend/src/main/java/com/tastetribe/dao/impl/MealPlanDaoImpl.java
 /app/java-backend/src/main/java/com/tastetribe/dao/impl/RecentlyViewedDaoImpl.java
 /app/java-backend/src/main/java/com/tastetribe/dao/impl/RecipeDaoImpl.java
 /app/java-backend/src/main/java/com/tastetribe/dao/impl/ReportDaoImpl.java
@@ -43,6 +47,7 @@
 /app/java-backend/src/main/java/com/tastetribe/dto/AdminDtos.java
 /app/java-backend/src/main/java/com/tastetribe/dto/AiDtos.java
 /app/java-backend/src/main/java/com/tastetribe/dto/AuthDtos.java
+/app/java-backend/src/main/java/com/tastetribe/dto/MealPlanDtos.java
 /app/java-backend/src/main/java/com/tastetribe/dto/RecipeDtos.java
 /app/java-backend/src/main/java/com/tastetribe/dto/ShoppingDtos.java
 /app/java-backend/src/main/java/com/tastetribe/dto/SocialDtos.java
@@ -58,6 +63,7 @@
 /app/java-backend/src/main/java/com/tastetribe/model/ChatMessage.java
 /app/java-backend/src/main/java/com/tastetribe/model/Comment.java
 /app/java-backend/src/main/java/com/tastetribe/model/Difficulty.java
+/app/java-backend/src/main/java/com/tastetribe/model/MealPlanEntry.java
 /app/java-backend/src/main/java/com/tastetribe/model/Nutrition.java
 /app/java-backend/src/main/java/com/tastetribe/model/PasswordReset.java
 /app/java-backend/src/main/java/com/tastetribe/model/Recipe.java
@@ -75,7 +81,9 @@
 /app/java-backend/src/main/java/com/tastetribe/service/AuthService.java
 /app/java-backend/src/main/java/com/tastetribe/service/CategoryService.java
 /app/java-backend/src/main/java/com/tastetribe/service/CommentService.java
+/app/java-backend/src/main/java/com/tastetribe/service/ImageStorageService.java
 /app/java-backend/src/main/java/com/tastetribe/service/LlmClient.java
+/app/java-backend/src/main/java/com/tastetribe/service/MealPlanService.java
 /app/java-backend/src/main/java/com/tastetribe/service/ProfileService.java
 /app/java-backend/src/main/java/com/tastetribe/service/RecipeService.java
 /app/java-backend/src/main/java/com/tastetribe/service/ReviewService.java

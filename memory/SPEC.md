@@ -45,7 +45,26 @@ Rubric-relevant highlights:
 `users`, `sessions`, `password_resets`, `categories`, `recipes`,
 `recipe_ingredients` (normalized child: name/quantity/unit/is_optional/position),
 `reviews` (unique on recipe_id+user_id), `comments`, `likes`, `favorites`, `follows`,
-`recently_viewed`, `shopping_list_items`, `reports`, `ai_messages`.
+`recently_viewed`, `shopping_list_items`, `reports`, `ai_messages`,
+`meal_plan_entries` (user + ISO date + slot + servings).
+
+## Added features (second iteration)
+- **Cover photo upload** — `POST /api/uploads/image` (multipart, login required, 8 MB cap,
+  image-only whitelist, UUID filename so the client name is never trusted). Files land in
+  `java-backend/uploads` and are served back at `/api/uploads/**` via a Spring resource
+  handler. `CoverPhotoPicker` offers Upload (drag-drop or file dialog) or URL.
+- **Cook Mode** — `CookMode.tsx`, a full-screen dark stepper opened by "Start cooking".
+  One step in large type, scaled ingredients beside it, keyboard arrows/Esc, and a
+  countdown **timer auto-seeded from any duration mentioned in the step text**
+  (e.g. "simmer 12 minutes" → 12:00) with start/pause/reset.
+- **Report buttons** — `ReportDialog.tsx` on every recipe (under Method) and every comment
+  (compact). Posts to the existing `POST /api/reports`; rows appear in `/admin?tab=reports`
+  and Dismiss removes them.
+- **Weekly meal planner** — `/meal-planner`. 7-day × 3-slot grid; drag saved recipes from
+  the side pool onto any cell, drag planted entries between cells (`PATCH /meal-plan/entries/{id}`),
+  or use the `+` picker on touch. **Build shopping list** (`POST /meal-plan/shopping-list?weekOf=`)
+  aggregates every planned recipe, scales each to its planned servings and merges identical
+  name+unit lines into one list. Weeks are normalised to Monday server-side.
 
 ## Key flows
 1. **Register/Login** → httpOnly `tt_session` cookie; `GET /api/auth/me` returns user or null.
@@ -60,6 +79,9 @@ Rubric-relevant highlights:
 6. **Feed** → Latest / Trending / People you follow / Recommended.
 7. **Shopping list** → persisted per user, merges duplicate ingredients, check/remove/clear.
 8. **Admin** `/admin` → stats, users, recipes, comments, reports moderation (403 for non-admins).
+9. **Meal planner** `/meal-planner` → drag saved recipes onto a week grid, then build one
+   combined shopping list for the whole week.
+10. **Cook mode** → "Start cooking" on any recipe opens the full-screen step view with timers.
 
 ## Roles
 - `USER` — publish/edit/delete own recipes, rate, comment, follow, shop.
