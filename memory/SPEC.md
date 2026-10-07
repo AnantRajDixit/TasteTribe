@@ -99,3 +99,7 @@ sudo supervisorctl restart java-backend              # run (port 8001)
 ```
 Frontend hot-reloads via Vite. A `mvn package` + `supervisorctl restart java-backend`
 is required after any Java change (no hot reload on the backend).
+
+## Profile picture upload (device library)
+- `AvatarPicker` (frontend/src/components/profile/AvatarPicker.tsx): upload from device (POST /api/uploads/image multipart) or paste a URL; 8 MB / image-type guard.
+- Used on signup (pages/Auth.tsx) and in `EditProfileDialog` (Dashboard header) which saves name/bio/avatarUrl via PATCH /api/auth/profile.

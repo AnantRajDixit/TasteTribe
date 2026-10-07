@@ -6,6 +6,7 @@ import { ChefHat } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import AvatarPicker from "@/components/profile/AvatarPicker";
 import { apiPost } from "@/lib/api";
 import { beginSession } from "@/lib/session";
 import { errorMessage } from "@/lib/format";
@@ -232,16 +233,11 @@ export function RegisterPage() {
             data-testid="register-password-input"
           />
         </div>
-        <div className="space-y-2">
-          <Label htmlFor="avatar">Profile picture URL (optional)</Label>
-          <Input
-            id="avatar"
-            value={form.avatarUrl}
-            onChange={(event) => setForm({ ...form, avatarUrl: event.target.value })}
-            placeholder="https://…"
-            data-testid="register-avatar-input"
-          />
-        </div>
+        <AvatarPicker
+          value={form.avatarUrl}
+          onChange={(next) => setForm({ ...form, avatarUrl: next })}
+          label="Profile picture (optional)"
+        />
         <Button type="submit" className="w-full" disabled={register.isPending} data-testid="register-submit-btn">
           {register.isPending ? "Creating account…" : "Create account"}
         </Button>

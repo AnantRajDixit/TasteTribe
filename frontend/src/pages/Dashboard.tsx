@@ -7,6 +7,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PageShell from "@/components/layout/PageShell";
 import RecipeGrid from "@/components/recipes/RecipeGrid";
+import EditProfileDialog from "@/components/profile/EditProfileDialog";
 import { useMe } from "@/lib/session";
 import type { Profile, Recipe, RecipePage } from "@/lib/types";
 
@@ -73,9 +74,12 @@ export default function Dashboard() {
               {me ? `Welcome back, ${me.name.split(" ")[0]}` : "Dashboard"}
             </h1>
           </div>
-          <Link to="/recipes/new" className={buttonVariants()} data-testid="dashboard-create-btn">
-            <PlusCircle className="mr-2 size-4" /> Add a recipe
-          </Link>
+          <div className="flex flex-wrap items-center gap-2">
+            {me && <EditProfileDialog me={me} />}
+            <Link to="/recipes/new" className={buttonVariants()} data-testid="dashboard-create-btn">
+              <PlusCircle className="mr-2 size-4" /> Add a recipe
+            </Link>
+          </div>
         </header>
 
         <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
