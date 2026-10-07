@@ -1,0 +1,57 @@
+# TasteTribe backend configuration.
+# The whole REST surface is served under the /api context path so the Vite dev
+# server can simply proxy /api/* here (single origin => no CORS pain, cookies ride along).
+server:
+  port: ${SERVER_PORT:8001}
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: taste-tribe
+  datasource:
+    # MySQL (JDBC). Override with env vars DB_URL / DB_USER / DB_PASSWORD if needed.
+    url: ${DB_URL:jdbc:mysql://localhost:3306/tastetribe}
+    username: ${DB_USER:tribe}
+    password: ${DB_PASSWORD:tribe123}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      pool-name: tastetribe-pool
+  sql:
+    init:
+      # Spring only auto-runs schema.sql for embedded databases; MySQL needs this
+      # explicitly. The script is fully CREATE TABLE IF NOT EXISTS, so it is idempotent.
+      mode: always
+      continue-on-error: false
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      write-dates-as-timestamps: false
+
+app:
+  cors:
+    # Allowed browser origins for credentialed requests (comma separated, * = any).
+    origins: ${CORS_ORIGINS:*}
+  auth:
+    cookie-name: tt_session
+    session-days: 7
+  ai:
+    # Emergent universal LLM key (OpenAI-compatible gateway). Key stays server-side only.
+    api-key: ${EMERGENT_LLM_KEY:}
+    base-url: ${INTEGRATION_PROXY_URL:https://integrations.emergentagent.com}/llm
+    model: ${AI_MODEL:gpt-5.4}
+    app-id: ${APP_URL:http://localhost:3000}
+
+---
+# Fallback profile when MySQL is unavailable: file-based H2 in MySQL compatibility
+# mode (still 100% JDBC — different driver, same DAO code).
+spring:
+  config:
+    activate:
+      on-profile: h2
+  datasource:
+    url: ${DB_URL:jdbc:h2:file:./data/tastetribe;MODE=MySQL;AUTO_SERVER=TRUE}
+    username: ${DB_USER:sa}
+    password: ${DB_PASSWORD:}
+    driver-class-name: org.h2.Driver
