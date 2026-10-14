@@ -1,0 +1,285 @@
+{
+  "theme": "light_editorial_warm",
+  "design_archetype": "ARCHETYPE 1: ORGANIC & EARTHY with Modern Culinary Editorial Polish (inspired by NYT Cooking, Mob Kitchen, and Bon Appétit)",
+  "emotional_tone": "Warm, inviting, gastronomic, artisanal, disciplined yet approachable, rich culinary storytelling with crisp utility",
+  "fonts": {
+    "heading": "Playfair Display Variable",
+    "body": "DM Sans Variable",
+    "mono": "IBM Plex Mono",
+    "imports": [
+      "@import \"@fontsource-variable/playfair-display\";",
+      "@import \"@fontsource-variable/dm-sans\";",
+      "@import \"@fontsource/ibm-plex-mono\";"
+    ],
+    "weights": {
+      "display": "font-bold tracking-tight",
+      "h1": "font-bold tracking-tight",
+      "h2": "font-semibold tracking-tight",
+      "h3": "font-medium",
+      "body": "font-normal leading-relaxed",
+      "mono_label": "font-mono text-xs uppercase tracking-wider"
+    }
+  },
+  "colors": {
+    "surfaces": [
+      {
+        "name": "page",
+        "kind": "solid",
+        "bg": "#FAF7F2",
+        "on_bg": "#1C1917",
+        "on_bg_muted": "#57534E",
+        "roles": {
+          "link": "#C2410C",
+          "error": "#B91C1C",
+          "success": "#15803D",
+          "accent_highlight": "#9A3412"
+        }
+      },
+      {
+        "name": "panel",
+        "kind": "solid",
+        "bg": "#FFFFFF",
+        "on_bg": "#1C1917",
+        "on_bg_muted": "#57534E",
+        "roles": {
+          "link": "#C2410C",
+          "border": "#E7E2D9",
+          "hover_subtle": "#F5EFE6"
+        }
+      },
+      {
+        "name": "warm_accent_card",
+        "kind": "solid",
+        "bg": "#F4ECE1",
+        "on_bg": "#1C1917",
+        "on_bg_muted": "#645E56"
+      },
+      {
+        "name": "inverse",
+        "kind": "solid",
+        "bg": "#1C1917",
+        "on_bg": "#FAF7F2",
+        "on_bg_muted": "#D6D3D1",
+        "roles": {
+          "link": "#FB923C",
+          "border": "#292524",
+          "accent_pill": "#EA580C"
+        }
+      },
+      {
+        "name": "hero",
+        "kind": "image",
+        "contrast_against": "#1C1917",
+        "guarantee": "scrim: linear-gradient(180deg, rgba(28,25,23,0.85) 0%, rgba(28,25,23,0.60) 50%, rgba(28,25,23,0.92) 100%)",
+        "on_bg": "#FAF7F2",
+        "on_bg_muted": "#D6D3D1",
+        "roles": {
+          "link": "#FDBA74",
+          "error": "#FCA5A5",
+          "success": "#86EFAC"
+        }
+      },
+      {
+        "name": "glass_nav",
+        "kind": "glass",
+        "contrast_against": "#FAF7F2",
+        "guarantee": "backdrop-blur-xl bg-[#FAF7F2]/90 border-b border-[#E7E2D9]/80 shadow-sm",
+        "on_bg": "#1C1917",
+        "on_bg_muted": "#57534E",
+        "roles": {
+          "link": "#C2410C",
+          "active": "#9A3412"
+        }
+      },
+      {
+        "name": "ai_assistant_panel",
+        "kind": "solid",
+        "bg": "#FFFFFF",
+        "on_bg": "#1C1917",
+        "on_bg_muted": "#57534E",
+        "roles": {
+          "header_bg": "#292524",
+          "header_text": "#FAF7F2",
+          "user_bubble": "#EA580C",
+          "user_bubble_text": "#FFFFFF",
+          "ai_bubble": "#F5EFE6",
+          "ai_bubble_text": "#1C1917"
+        }
+      }
+    ],
+    "accent": "#EA580C",
+    "on_accent": "#FFFFFF",
+    "secondary_accent": "#15803D",
+    "on_secondary_accent": "#FFFFFF",
+    "terracotta": "#C2410C",
+    "sage": "#4D7C0F",
+    "border_subtle": "#E7E2D9"
+  },
+  "typography": {
+    "scale_px": {
+      "display": 56,
+      "h1": 44,
+      "h2": 32,
+      "h3": 22,
+      "h4": 18,
+      "body": 16,
+      "caption": 14
+    },
+    "font_families": {
+      "heading": "'Playfair Display Variable', Georgia, serif",
+      "sans": "'DM Sans Variable', system-ui, -apple-system, sans-serif",
+      "mono": "'IBM Plex Mono', Menlo, monospace"
+    }
+  },
+  "entry_surfaces": {
+    "/": "editorial food hero with curated culinary story, quick search, interactive recipe showcase, category ribbons and floating AI chef button",
+    "/recipes": "filter sidebar left with cuisine/diet/time, responsive culinary grid right with sort controls and active tag pills",
+    "/recipe/:id": "immersive recipe detail with cover hero, serving scaler widget, interactive checklist ingredients, cooking steps, review list and ratings summary",
+    "/recipe/new": "structured recipe studio with dynamic multi-row ingredient builder, nutrition facts, cover preview, and step-by-step editor",
+    "/dashboard": "culinary workspace with tabs (My Creations, Saved Bookmarks, Cooking History, Drafts), user stats, and quick create action",
+    "/shopping-list": "interactive grocery checklist split by aisle/recipe, quick-add item bar, clear completed, and export modal",
+    "/profile/:username": "chef/foodie profile card with follow button, bio, culinary stats, published recipes grid, and follower counts",
+    "/ai-assistant": "floating responsive sous-chef modal with pantry generator ('potatoes, onions, eggs'), substitute advisor, and recipe creator",
+    "/admin": "moderation dashboard with tabbed user management, recipe audits, category tags editor, comment moderation, and platform analytics",
+    "/login": "split culinary auth — artisanal food illustration panel left with community quote, credential form with remember me right",
+    "/register": "split culinary signup — membership benefits & recipe perks left, registration form right"
+  },
+  "grids_and_layouts": {
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "navbar": "sticky top-0 z-40 w-full backdrop-blur-xl bg-[#FAF7F2]/90 border-b border-[#E7E2D9]",
+    "recipe_grid": "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6",
+    "editorial_bento": "grid grid-cols-1 md:grid-cols-12 gap-6",
+    "recipe_detail_layout": "grid grid-cols-1 lg:grid-cols-12 gap-8 items-start",
+    "recipe_detail_ingredients_col": "lg:col-span-5 sticky top-24 space-y-6",
+    "recipe_detail_steps_col": "lg:col-span-7 space-y-8",
+    "filter_page_layout": "grid grid-cols-1 lg:grid-cols-4 gap-8",
+    "spacing_philosophy": "Generous warm whitespace (p-6, p-8, py-16, py-24). Avoid cramped boxes. Clean 1px warm borders (#E7E2D9) with subtle ambient shadows."
+  },
+  "visual_enhancers": {
+    "textures": "Subtle warm paper grain overlay (2% opacity) on #FAF7F2 body for tactile culinary book feel",
+    "badges": "Pill-shaped badges with soft warm backgrounds (e.g., bg-orange-100 text-orange-800, bg-emerald-100 text-emerald-800, bg-stone-100 text-stone-800)",
+    "recipe_card_hover": "Subtle card elevation translateY(-3px) with soft ambient drop-shadow shadow-[0_12px_24px_rgba(28,25,23,0.06)] and image zoom (scale-105 transition-transform duration-500)",
+    "serving_scaler": "Tactile plus/minus counter pill with instant quantity recalculation animation",
+    "floating_ai_badge": "Subtle glowing pulse ring (ring-2 ring-orange-500/30) with warm chef hat icon"
+  },
+  "motion_and_interactions": {
+    "page_transitions": "Fade in with subtle 8px upward slide using motion/react or Tailwind animations",
+    "interactive_elements": "transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease",
+    "stagger_grid": "Stagger children by 0.05s on initial feed load",
+    "accordion_steps": "Smooth expand/collapse for step tips and substitutions",
+    "toast_notifications": "Sonner toast with warm theme icons for Saved, Rated, Shopping List added, and Copied Share Link"
+  },
+  "accessibility": {
+    "contrast_check": "All text tokens exceed APCA standards and WCAG AA 4.5:1 ratio against their declared surface backgrounds",
+    "interactive_affordances": "Visible focus-visible:ring-2 focus-visible:ring-orange-600 focus-visible:ring-offset-2 on all inputs, buttons, and links",
+    "aria_labels": "Clear aria-labels on icon-only buttons (bookmark, like, share, scale, close AI assistant, remove grocery item)",
+    "screen_reader_announcements": "Live region for ingredient quantity recalculation when scaling servings"
+  },
+  "image_urls": {
+    "hero_featured": {
+      "url": "https://images.unsplash.com/photo-1516100882582-96c3a05fe590?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MjJ8MHwxfHNlYXJjaHwxfHxhcnRpc2FuYWwlMjBwYXN0YSUyMGRpc2glMjB0YWJsZXxlbnwwfHx8fDE3OTEzODI5NzB8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Artisanal hand-spun pasta in rich slow-simmered tomato sauce with fresh basil",
+      "category": "hero_banner"
+    },
+    "hero_secondary_culinary": {
+      "url": "https://images.unsplash.com/photo-1516685018646-549198525c1b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MjJ8MHwxfHNlYXJjaHwzfHxhcnRpc2FuYWwlMjBwYXN0YSUyMGRpc2glMjB0YWJsZXxlbnwwfHx8fDE3OTEzODI5NzB8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Linguine aglio e olio with fresh herbs and toasted garlic in rustic ceramic bowl",
+      "category": "editorial_showcase"
+    },
+    "category_pasta": {
+      "url": "https://images.unsplash.com/photo-1556029096-6696c16e115d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MjJ8MHwxfHNlYXJjaHw0fHxhcnRpc2FuYWwlMjBwYXN0YSUyMGRpc2glMjB0YWJsZXxlbnwwfHx8fDE3OTEzODI5NzB8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Rich creamy rigatoni pasta dish",
+      "category": "category_card_pasta"
+    },
+    "category_chef_special": {
+      "url": "https://images.unsplash.com/photo-1572715376701-98568319fd0b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwxfHxjaGVmJTIwcGxhdGluZyUyMGdvdXJtZXQlMjBmb29kfGVufDB8fHx8MTc5MTM4Mjk3MHww&ixlib=rb-4.1.0&q=85",
+      "description": "Executive chef seasoning gourmet culinary entree",
+      "category": "featured_chef_story"
+    },
+    "category_masterclass": {
+      "url": "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwyfHxjaGVmJTIwcGxhdGluZyUyMGdvdXJtZXQlMjBmb29kfGVufDB8fHx8MTc5MTM4Mjk3MHww&ixlib=rb-4.1.0&q=85",
+      "description": "Professional chef precision knife work and prep in warm commercial kitchen",
+      "category": "about_community"
+    },
+    "fresh_ingredients_rustic": {
+      "url": "https://images.unsplash.com/photo-1560179524-382d0d0f27f9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NjZ8MHwxfHNlYXJjaHwxfHxmcmVzaCUyMHJ1c3RpYyUyMGluZ3JlZGllbnRzJTIwZmxhdGxheXxlbnwwfHx8fDE3OTEzODI5NzB8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Crisp farm-fresh produce with purple onions, fresh lemons, cucumber and olive oil",
+      "category": "pantry_ai_assistant_bg"
+    },
+    "baking_dessert_spread": {
+      "url": "https://images.unsplash.com/photo-1588467850132-d1668cdaab88?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NjZ8MHwxfHNlYXJjaHwyfHxmcmVzaCUyMHJ1c3RpYyUyMGluZ3JlZGllbnRzJTIwZmxhdGxheXxlbnwwfHx8fDE3OTEzODI5NzB8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Artisan baking station with fresh butter, organic eggs, flour and wild berries",
+      "category": "category_baking"
+    }
+  },
+  "component_structure": {
+    "navbar": "frontend/src/components/layout/Navbar.tsx",
+    "footer": "frontend/src/components/layout/Footer.tsx",
+    "recipe_card": "frontend/src/components/recipes/RecipeCard.tsx",
+    "recipe_scaler": "frontend/src/components/recipes/ServingScaler.tsx",
+    "ingredient_list": "frontend/src/components/recipes/IngredientList.tsx",
+    "step_timeline": "frontend/src/components/recipes/StepTimeline.tsx",
+    "review_section": "frontend/src/components/recipes/ReviewSection.tsx",
+    "recipe_builder_form": "frontend/src/components/recipes/RecipeBuilderForm.tsx",
+    "filter_bar": "frontend/src/components/recipes/FilterBar.tsx",
+    "ai_assistant_fab": "frontend/src/components/ai/FloatingAIAssistant.tsx",
+    "pantry_generator_modal": "frontend/src/components/ai/PantryRecipeGenerator.tsx",
+    "substitution_drawer": "frontend/src/components/ai/SubstitutionAdvisor.tsx",
+    "shopping_list_view": "frontend/src/components/shopping/ShoppingListTable.tsx",
+    "admin_stat_cards": "frontend/src/components/admin/AdminStatCards.tsx",
+    "admin_moderation_table": "frontend/src/components/admin/AdminModerationTable.tsx"
+  },
+  "testing_attributes": {
+    "convention": "kebab-case data-testid on every interactive and key informational element",
+    "required_testids": [
+      "navbar-brand-logo",
+      "nav-explore-link",
+      "nav-categories-link",
+      "nav-shopping-list-link",
+      "nav-dashboard-link",
+      "nav-create-recipe-btn",
+      "nav-auth-login-btn",
+      "nav-user-menu-trigger",
+      "search-input-main",
+      "search-submit-btn",
+      "filter-cuisine-select",
+      "filter-dietary-checkbox",
+      "filter-difficulty-select",
+      "filter-time-slider",
+      "sort-by-select",
+      "recipe-card-item",
+      "recipe-card-title",
+      "recipe-card-bookmark-btn",
+      "recipe-card-rating",
+      "recipe-detail-title",
+      "serving-scaler-decrement",
+      "serving-scaler-increment",
+      "serving-scaler-display",
+      "ingredient-item-checkbox",
+      "ingredient-quantity-label",
+      "add-all-to-shopping-list-btn",
+      "review-rating-star-group",
+      "review-comment-textarea",
+      "review-submit-btn",
+      "floating-ai-assistant-btn",
+      "ai-chat-input",
+      "ai-chat-send-btn",
+      "ai-pantry-generate-btn",
+      "ai-substitute-trigger-btn",
+      "shopping-list-item-checkbox",
+      "shopping-list-remove-btn",
+      "shopping-list-add-input",
+      "admin-user-row",
+      "admin-delete-recipe-btn",
+      "admin-approve-recipe-btn"
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Follow the warm editorial food platform aesthetic (warm paper #FAF7F2, deep stone #1C1917, vibrant terracotta #EA580C accent). Never build a generic college CRUD app.",
+    "Implement the responsive website with full desktop navigation (Explore, Categories, Trending, Shopping List, Dashboard, Floating AI Assistant, Profile/Auth) and smooth mobile collapse.",
+    "Ensure all ingredient quantities support automatic recalculation with serving scaling (e.g. 2 to 8 servings) and one-click add to persistent Shopping List.",
+    "Build the floating AI Sous-Chef chat assistant with real culinary context, pantry recipe generation ('potatoes, onions, eggs'), and instant ingredient substitutions.",
+    "Include full data-testid attributes on all buttons, forms, cards, inputs, and modals as outlined in the testing attributes section.",
+    "Use Toast notifications via Sonner for bookmarking, saving, copying recipe links, and shopping list operations."
+  ]
+}

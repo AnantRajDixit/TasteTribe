@@ -1,0 +1,85 @@
+# TasteTribe backend configuration.
+# The whole REST surface is served under the /api context path so the Vite dev
+# server can simply proxy /api/* here (single origin => no CORS pain, cookies ride along).
+server:
+  port: ${SERVER_PORT:8001}
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: taste-tribe
+  profiles:
+    default: local
+  sql:
+    init:
+      # Spring only auto-runs schema.sql for embedded databases; MySQL needs this
+      # explicitly. The script is fully CREATE TABLE IF NOT EXISTS, so it is idempotent.
+      mode: always
+      continue-on-error: false
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      write-dates-as-timestamps: false
+  servlet:
+    multipart:
+      max-file-size: 8MB
+      max-request-size: 10MB
+
+app:
+  uploads:
+    # Where uploaded cover photos are stored; served back at /api/uploads/**
+    dir: ${UPLOADS_DIR:./uploads}
+  cors:
+    # Allowed browser origins for credentialed requests (comma separated, * = any).
+    origins: ${CORS_ORIGINS:*}
+  auth:
+    cookie-name: tt_session
+    session-days: 7
+  ai:
+    # Emergent universal LLM key (OpenAI-compatible gateway). Key stays server-side only.
+    api-key: ${EMERGENT_LLM_KEY:}
+    base-url: ${INTEGRATION_PROXY_URL:https://integrations.emergentagent.com}/llm
+    model: ${AI_MODEL:gpt-5.4}
+    app-id: ${APP_URL:http://localhost:3000}
+
+---
+# Hosted MySQL production profile
+# Activated via: --spring.profiles.active=prod or env SPRING_PROFILES_ACTIVE=prod
+# Uses strictly environment-provided credentials; no hardcoded passwords or localhost defaults.
+spring:
+  config:
+    activate:
+      on-profile: prod | mysql
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      pool-name: tastetribe-prod-pool
+      maximum-pool-size: ${DB_POOL_SIZE:10}
+      minimum-idle: ${DB_MIN_IDLE:2}
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      validation-timeout: 5000
+      leak-detection-threshold: 30000
+
+---
+# Local development fallback profile: file-based H2 in MySQL compatibility mode
+# (100% JDBC — same DAO and SQL schema, no locally installed MySQL required).
+# Activated by default when no profile is explicitly passed.
+spring:
+  config:
+    activate:
+      on-profile: local | dev | h2
+  datasource:
+    url: ${DB_URL:jdbc:h2:file:./data/tastetribe;MODE=MySQL;AUTO_SERVER=TRUE}
+    username: ${DB_USER:sa}
+    password: ${DB_PASSWORD:}
+    driver-class-name: org.h2.Driver
+    hikari:
+      pool-name: tastetribe-local-pool
+      maximum-pool-size: 5
+      connection-timeout: 10000
